@@ -41,15 +41,12 @@ class SpendingTrendChart extends StatelessWidget {
               height: 200,
               child: LineChart(
                 LineChartData(
+                  clipData: FlClipData.all(),
                   gridData: FlGridData(
                     show: true,
-                    drawVerticalLine: true,
+                    drawVerticalLine: false,
                     horizontalInterval: 1,
-                    verticalInterval: 1,
                     getDrawingHorizontalLine: (value) {
-                      return FlLine(color: Colors.grey[300]!, strokeWidth: 1);
-                    },
-                    getDrawingVerticalLine: (value) {
                       return FlLine(color: Colors.grey[300]!, strokeWidth: 1);
                     },
                   ),
@@ -87,7 +84,7 @@ class SpendingTrendChart extends StatelessWidget {
                     border: Border.all(color: Colors.grey[300]!),
                   ),
                   minX: 0,
-                  maxX: dailySpending.length - 1.toDouble(),
+                  maxX: (dailySpending.length - 1).toDouble(),
                   minY: 0,
                   maxY: _getMaxSpending(dailySpending),
                   lineBarsData: [

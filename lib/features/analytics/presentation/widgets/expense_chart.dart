@@ -39,6 +39,7 @@ class ExpenseChart extends ConsumerWidget {
               height: 200,
               child: LineChart(
                 LineChartData(
+                  clipData: FlClipData.all(),
                   gridData: FlGridData(show: true),
                   titlesData: FlTitlesData(
                     leftTitles: AxisTitles(
