@@ -70,7 +70,7 @@ class _AddBudgetPageState extends ConsumerState<AddBudgetPage> {
                 decoration: const InputDecoration(
                   labelText: 'Budget Amount',
                   hintText: '0.00',
-                  prefixText: '\$',
+                  prefixText: '₹',
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {

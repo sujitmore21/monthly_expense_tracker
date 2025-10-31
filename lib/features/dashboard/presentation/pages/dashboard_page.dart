@@ -224,7 +224,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage>
               final totalSpent = stats['totalSpent'] as double;
 
               return Text(
-                '\$${totalSpent.toStringAsFixed(2)}',
+                '₹${totalSpent.toStringAsFixed(2)}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 32,
@@ -289,7 +289,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage>
                   Expanded(
                     child: _buildModernStatCard(
                       'Total Spent',
-                      '\$${totalSpent.toStringAsFixed(2)}',
+                      '₹${totalSpent.toStringAsFixed(2)}',
                       Colors.red,
                       Icons.shopping_cart_outlined,
                       Colors.red.withOpacity(0.1),
@@ -712,7 +712,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage>
             ),
           ),
           Text(
-            '\$${expense.amount.toStringAsFixed(2)}',
+            '₹${expense.amount.toStringAsFixed(2)}',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.red,

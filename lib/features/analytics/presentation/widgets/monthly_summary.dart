@@ -34,7 +34,7 @@ class MonthlySummary extends ConsumerWidget {
                   _buildSummaryItem(
                     context,
                     'Total Spent',
-                    '\$${total.toStringAsFixed(2)}',
+                    '₹${total.toStringAsFixed(2)}',
                     Icons.account_balance_wallet,
                     Theme.of(context).colorScheme.primary,
                   ),
@@ -86,7 +86,7 @@ class MonthlySummary extends ConsumerWidget {
                           children: [
                             Text(entry.key),
                             Text(
-                              '\$${entry.value.toStringAsFixed(2)} ($percentage%)',
+                              '₹${entry.value.toStringAsFixed(2)} ($percentage%)',
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(fontWeight: FontWeight.bold),
                             ),

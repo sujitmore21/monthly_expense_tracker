@@ -203,7 +203,7 @@ class SpendingTrendChart extends StatelessWidget {
   }
 
   Widget _buildLeftTitle(double value, TitleMeta meta) {
-    return Text('\$${value.toInt()}', style: const TextStyle(fontSize: 10));
+    return Text('₹${value.toInt()}', style: const TextStyle(fontSize: 10));
   }
 
   Widget _buildSummary(
@@ -227,25 +227,25 @@ class SpendingTrendChart extends StatelessWidget {
         _buildSummaryItem(
           context,
           'Total',
-          '\$${totalSpending.toStringAsFixed(2)}',
+          '₹${totalSpending.toStringAsFixed(2)}',
           Colors.blue,
         ),
         _buildSummaryItem(
           context,
           'Average',
-          '\$${averageSpending.toStringAsFixed(2)}',
+          '₹${averageSpending.toStringAsFixed(2)}',
           Colors.green,
         ),
         _buildSummaryItem(
           context,
           'Highest',
-          '\$${maxSpending.toStringAsFixed(2)}',
+          '₹${maxSpending.toStringAsFixed(2)}',
           Colors.orange,
         ),
         _buildSummaryItem(
           context,
           'Lowest',
-          '\$${minSpending.toStringAsFixed(2)}',
+          '₹${minSpending.toStringAsFixed(2)}',
           Colors.purple,
         ),
       ],

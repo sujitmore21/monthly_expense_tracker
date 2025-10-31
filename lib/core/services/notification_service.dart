@@ -65,7 +65,7 @@ class NotificationService {
     if (isOverBudget) {
       title = 'Budget Exceeded!';
       body =
-          'You have exceeded your budget for ${budget.name} by \$${(budget.spent - budget.amount).toStringAsFixed(2)}';
+          'You have exceeded your budget for ${budget.name} by ₹${(budget.spent - budget.amount).toStringAsFixed(2)}';
     } else if (isNearDanger) {
       title = 'Budget Danger Zone';
       body =

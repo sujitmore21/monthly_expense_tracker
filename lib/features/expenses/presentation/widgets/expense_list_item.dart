@@ -67,7 +67,7 @@ class ExpenseListItem extends ConsumerWidget {
           ],
         ),
         trailing: Text(
-          '\$${expense.amount.toStringAsFixed(2)}',
+          '₹${expense.amount.toStringAsFixed(2)}',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.primary,

@@ -83,7 +83,7 @@ class BudgetCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '\$${budget.spent.toStringAsFixed(2)}',
+                    '₹${budget.spent.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: isOverBudget
                           ? Theme.of(context).colorScheme.error
@@ -94,7 +94,7 @@ class BudgetCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'of \$${budget.amount.toStringAsFixed(2)}',
+                    'of ₹${budget.amount.toStringAsFixed(2)}',
                     style: Theme.of(
                       context,
                     ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),

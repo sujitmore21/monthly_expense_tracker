@@ -234,6 +234,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ ] Dark mode improvements
 - [ ] Widget support for quick expense entry
 
+## Documentation
+
+Comprehensive documentation is available:
+
+- **[COMPLETE_ARCHITECTURE.md](COMPLETE_ARCHITECTURE.md)** - Full architecture documentation, data structures, and all features
+- **[FEATURE_STATUS.md](FEATURE_STATUS.md)** - Detailed feature status dashboard and roadmap
+- **[ARCHITECTURE_DIAGRAMS.md](ARCHITECTURE_DIAGRAMS.md)** - Visual architecture diagrams and data flows
+
 ## Support
 
 For issues and questions:

@@ -84,13 +84,13 @@ class BudgetProgressWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Spent: \$${budget.spent.toStringAsFixed(2)}',
+                        'Spent: ₹${budget.spent.toStringAsFixed(2)}',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Colors.grey[600],
                         ),
                       ),
                       Text(
-                        'Budget: \$${budget.amount.toStringAsFixed(2)}',
+                        'Budget: ₹${budget.amount.toStringAsFixed(2)}',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -102,7 +102,7 @@ class BudgetProgressWidget extends StatelessWidget {
                     children: [
                       if (isOverBudget)
                         Text(
-                          'Over by \$${(-remaining).toStringAsFixed(2)}',
+                          'Over by ₹${(-remaining).toStringAsFixed(2)}',
                           style: const TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class BudgetProgressWidget extends StatelessWidget {
                         )
                       else
                         Text(
-                          'Remaining: \$${remaining.toStringAsFixed(2)}',
+                          'Remaining: ₹${remaining.toStringAsFixed(2)}',
                           style: TextStyle(
                             color: Colors.grey[600],
                             fontWeight: FontWeight.w500,

@@ -83,7 +83,7 @@ class ExpensesPage extends ConsumerWidget {
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '\$${total.toStringAsFixed(2)}',
+                            '₹${total.toStringAsFixed(2)}',
                             style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(
                                   color: Theme.of(context).colorScheme.primary,

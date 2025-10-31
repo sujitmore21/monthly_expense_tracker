@@ -71,7 +71,7 @@ class _AddExpensePageState extends ConsumerState<AddExpensePage> {
                 decoration: const InputDecoration(
                   labelText: 'Amount',
                   hintText: '0.00',
-                  prefixText: '\$',
+                  prefixText: '₹',
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -190,6 +190,11 @@ class _AddExpensePageState extends ConsumerState<AddExpensePage> {
       );
 
       ref.read(expenseNotifierProvider.notifier).addExpense(expense);
+
+      // Also refresh the FutureProvider used by dashboard
+      ref.refresh(expensesProvider);
+      ref.refresh(monthlyExpensesProvider(DateTime.now()));
+
       Navigator.of(context).pop();
     }
   }

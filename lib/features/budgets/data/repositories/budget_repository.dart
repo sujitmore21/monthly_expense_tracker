@@ -10,9 +10,14 @@ class BudgetRepository {
   }
 
   Future<List<BudgetModel>> getActiveBudgets() async {
-    return HiveService.budgets.values
-        .where((budget) => budget.isActive)
-        .toList();
+    final allBudgets = HiveService.budgets.values.toList();
+    print('getActiveBudgets: total budgets in Hive = ${allBudgets.length}');
+    final activeBudgets = allBudgets.where((budget) {
+      print('  Budget: ${budget.name}, isActive: ${budget.isActive}');
+      return budget.isActive;
+    }).toList();
+    print('getActiveBudgets: found ${activeBudgets.length} active budgets');
+    return activeBudgets;
   }
 
   Future<List<BudgetModel>> getBudgetsByDateRange(

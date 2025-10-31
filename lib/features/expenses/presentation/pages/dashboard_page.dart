@@ -97,16 +97,20 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
   @override
   Widget build(BuildContext context) {
     // Add a small delay to show shimmer effect
-    final expensesAsync = ref.watch(monthlyExpensesProvider(DateTime.now()));
-    final budgetsAsync = ref.watch(budgetsProvider);
+    final monthlyExpensesAsync = ref.watch(
+      monthlyExpensesProvider(DateTime.now()),
+    );
+    final recentExpensesAsync = ref.watch(expensesProvider);
+    final budgetsAsync = ref.watch(activeBudgetsProvider);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FA),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.refresh(monthlyExpensesProvider(DateTime.now()));
+          ref.refresh(expensesProvider);
           ref.refresh(categoriesProvider);
-          ref.refresh(budgetsProvider);
+          ref.refresh(activeBudgetsProvider);
         },
         child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -117,8 +121,8 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
                 opacity: _fadeAnimation,
                 child: Column(
                   children: [
-                    _buildWelcomeSection(expensesAsync),
-                    _buildRecentExpenses(expensesAsync),
+                    _buildWelcomeSection(monthlyExpensesAsync),
+                    _buildRecentExpenses(recentExpensesAsync),
                     _buildBudgetOverview(budgetsAsync),
                     const SizedBox(height: 100), // Space for FAB
                   ],
@@ -186,7 +190,8 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
                       onPressed: () {
                         // Force refresh to show shimmer
                         ref.refresh(monthlyExpensesProvider(DateTime.now()));
-                        ref.refresh(budgetsProvider);
+                        ref.refresh(expensesProvider);
+                        ref.refresh(activeBudgetsProvider);
                       },
                       icon: const Icon(Icons.refresh, color: Colors.white),
                     ),
@@ -267,7 +272,7 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
                 (sum, expense) => sum + expense.amount,
               );
               return Text(
-                '\$${total.toStringAsFixed(2)}',
+                '₹${total.toStringAsFixed(2)}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 32,
@@ -276,10 +281,14 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
               );
             },
             loading: () => _buildShimmerAmount(),
-            error: (error, stack) => const Text(
-              'Error loading data',
-              style: TextStyle(color: Colors.white70),
-            ),
+            error: (error, stack) {
+              print('Error loading expenses: $error');
+              print('Stack trace: $stack');
+              return Text(
+                'Error: $error',
+                style: const TextStyle(color: Colors.white70),
+              );
+            },
           ),
         ],
       ),
@@ -312,7 +321,10 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
           expensesAsync.when(
             data: (expenses) {
               print('Recent Expenses: Found ${expenses.length} expenses');
-              final recentExpenses = expenses.take(5).toList();
+              // Sort expenses by date (most recent first) and take top 5
+              final sortedExpenses = List.from(expenses)
+                ..sort((a, b) => b.date.compareTo(a.date));
+              final recentExpenses = sortedExpenses.take(5).toList();
               if (recentExpenses.isEmpty) {
                 return const Center(
                   child: Padding(
@@ -333,7 +345,11 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
             loading: () => Column(
               children: List.generate(3, (index) => _buildShimmerExpenseTile()),
             ),
-            error: (error, stack) => Center(child: Text('Error: $error')),
+            error: (error, stack) {
+              print('Error loading recent expenses: $error');
+              print('Stack trace: $stack');
+              return Center(child: Text('Error: $error'));
+            },
           ),
         ],
       ),
@@ -380,7 +396,7 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
             ),
           ),
           Text(
-            '\$${expense.amount.toStringAsFixed(2)}',
+            '₹${expense.amount.toStringAsFixed(2)}',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.red,
@@ -470,7 +486,7 @@ class _DashboardHomePageState extends ConsumerState<DashboardHomePage>
                 ),
               ),
               Text(
-                '\$${budget.spent.toStringAsFixed(2)} / \$${budget.amount.toStringAsFixed(2)}',
+                '₹${budget.spent.toStringAsFixed(2)} / ₹${budget.amount.toStringAsFixed(2)}',
                 style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               ),
             ],

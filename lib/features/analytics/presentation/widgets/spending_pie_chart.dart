@@ -199,7 +199,7 @@ class SpendingPieChart extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      '\$${entry.value.toStringAsFixed(2)}',
+                      '₹${entry.value.toStringAsFixed(2)}',
                       style: TextStyle(fontSize: 10, color: Colors.grey[600]),
                     ),
                   ],

@@ -339,7 +339,7 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage>
               children: [
                 _buildSummaryItem(
                   'Total Spent',
-                  '\$${totalSpending.toStringAsFixed(2)}',
+                  '₹${totalSpending.toStringAsFixed(2)}',
                   Colors.red,
                 ),
                 _buildSummaryItem(
@@ -349,7 +349,7 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage>
                 ),
                 _buildSummaryItem(
                   'Average',
-                  '\$${averageSpending.toStringAsFixed(2)}',
+                  '₹${averageSpending.toStringAsFixed(2)}',
                   Colors.green,
                 ),
               ],
@@ -388,7 +388,7 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage>
               children: [
                 _buildSummaryItem(
                   'Total Spent',
-                  '\$${totalSpending.toStringAsFixed(2)}',
+                  '₹${totalSpending.toStringAsFixed(2)}',
                   Colors.red,
                 ),
                 _buildSummaryItem(
@@ -398,7 +398,7 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage>
                 ),
                 _buildSummaryItem(
                   'Per Day',
-                  '\$${averagePerDay.toStringAsFixed(2)}',
+                  '₹${averagePerDay.toStringAsFixed(2)}',
                   Colors.green,
                 ),
               ],
